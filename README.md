@@ -5,6 +5,12 @@
 
 PHP client of [Sonic search](https://github.com/valeriansaliou/sonic)
 
+## Install
+
+```
+composer require php-sonic/php-sonic
+```
+
 ## Usage
 
 ```php
