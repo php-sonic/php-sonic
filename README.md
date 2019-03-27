@@ -1,5 +1,8 @@
 # php-sonic
 
+[![Latest Stable Version](https://poser.pugx.org/php-sonic/php-sonic/version)](https://packagist.org/packages/php-sonic/php-sonic)
+[![Total Downloads](https://poser.pugx.org/php-sonic/php-sonic/downloads)](https://packagist.org/packages/php-sonic/php-sonic)
+
 PHP client of [Sonic search](https://github.com/valeriansaliou/sonic)
 
 ## Usage
