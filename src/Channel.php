@@ -38,6 +38,7 @@ abstract class Channel
 
         $socketFactory = new \Socket\Raw\Factory();
         $this->socket = $socketFactory->createClient("$address:$port", $connectionTimeout);
+        $this->socket->setOption(SOL_SOCKET, SO_RCVTIMEO, ['sec' => $readTimeout, 'usec' => 0]);
         $resp = $this->readBuffer();
         if (!preg_match('%^CONNECTED%', $resp)) {
             throw new RuntimeException("unexpected response: $resp");
@@ -57,20 +58,15 @@ abstract class Channel
      * Read buffer until the delimiter character.
      * @param string $delimiter
      * @return string
+     * @throws \Socket\Raw\Exception when read timeout
      */
     protected function readBuffer($delimiter = "\n")
     {
         $resp = '';
-        $timePassed = 0;
-        $timeout = $this->readTimeout * 1e6;
         do {
-            $c = $this->socket->recv(1, MSG_NOSIGNAL);
+            $c = $this->socket->read(1);
             $resp .= $c;
-            usleep(1000);
-            $timePassed += 1000;
-            if ($timePassed > $timeout) {
-                throw new RuntimeException('read timeout');
-            }
+            usleep(1);
         } while ($c !== $delimiter);
         return $resp;
     }

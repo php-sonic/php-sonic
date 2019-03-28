@@ -5,8 +5,8 @@ require __DIR__ . '/vendor/autoload.php';
 $address = '127.0.0.1';
 $port = 1491;
 $password = 'passwd';
-$connectionTimeout = 10;
-$readTimeout = 10;
+$connectionTimeout = 1;
+$readTimeout = 1;
 $collection = 'messages';
 $bucket = 'default';
 
