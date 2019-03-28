@@ -2,7 +2,9 @@
     "name": "php-sonic/php-sonic",
     "type": "library",
     "description": "PHP client of Sonic search",
+    "version": "1.0.2",
     "license": "MIT",
+    "keywords": ["sonic", "search"],
     "require": {
         "clue/socket-raw": "^1.4"
     },
