@@ -114,5 +114,6 @@ abstract class Channel
         if (!preg_match('%^ENDED%', $resp)) {
             throw new RuntimeException("unexpected response: $resp");
         }
+        $this->socket->close();
     }
 }
