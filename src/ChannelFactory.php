@@ -2,39 +2,53 @@
 
 namespace SonicSearch;
 
-class ChannelFactory
-{
-    private $address;
-
-    private $port;
-
-    private $password;
-
-    private $connectionTimeout;
-
-    private $readTimeout;
+class ChannelFactory {
 
     /**
+     * @var string
+     */
+    private $host;
+    /**
+     * @var int
+     */
+    private $port;
+    /**
+     * @var string
+     */
+    private $password;
+    /**
+     * @var string
+     */
+	private $mode;
+    /**
+     * @var int
+     */
+	private $receiveTimeout;
+	/**
+	 * @var int
+	 */
+	private $connectionTimeout;
+
+	
+    /**
      * ChannelFactory constructor.
-     * @param $address
+     * @param $host
      * @param $port
      * @param $password
      * @param $connectionTimeout
      * @param $readTimeout
      */
-    public function __construct($address, $port, $password, $connectionTimeout, $readTimeout)
-    {
-        $this->address = $address;
+    public function __construct(string $host, int $port, string $password, int $connectionTimeout = 10, int $readTimeout = 0) {
+        $this->host = $host;
         $this->port = $port;
         $this->password = $password;
         $this->connectionTimeout = $connectionTimeout;
         $this->readTimeout = $readTimeout;
     }
 
-    public function newIngestChannel()
-    {
+    public function newIngestChannel() : IngestChannel {
         return new IngestChannel(
-            $this->address,
+            $this->host,
             $this->port,
             $this->password,
             $this->connectionTimeout,
@@ -42,10 +56,9 @@ class ChannelFactory
         );
     }
 
-    public function newSearchChannel()
-    {
+    public function newSearchChannel() : SearchChannel {
         return new SearchChannel(
-            $this->address,
+            $this->host,
             $this->port,
             $this->password,
             $this->connectionTimeout,
@@ -53,10 +66,9 @@ class ChannelFactory
         );
     }
 
-    public function newControlChannel()
-    {
+    public function newControlChannel() : ControlChannel {
         return new ControlChannel(
-            $this->address,
+            $this->host,
             $this->port,
             $this->password,
             $this->connectionTimeout,
