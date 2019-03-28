@@ -5,7 +5,7 @@ define('__SONIC_CLIENT_DEBUG__', true);
 
 $address = 'localhost';
 $port = 1491;
-$password = 'SecretPassword';
+$password = 'passwd';
 $connectionTimeout = 10;
 $readTimeout = 5;
 $collection = 'messages';
