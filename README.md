@@ -9,7 +9,6 @@ PHP client of [Sonic search](https://github.com/valeriansaliou/sonic)
 ## Requirements
 
 - PHP >= 7.0
-- [Sockets extension](https://www.php.net/manual/en/book.sockets.php)
 
 ## Install
 
