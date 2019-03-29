@@ -18,11 +18,11 @@ $search = $factory->newSearchChannel();
 $control = $factory->newControlChannel();
 
 try {
-	$ingest->connect();
-	$search->connect();
-	$control->connect();
+    $ingest->connect();
+    $search->connect();
+    $control->connect();
 } catch (\SonicSearch\NoConnectionException $e) {
-	echo("Failed to connect to Sonic: $e\n");
+    echo("Failed to connect to Sonic: $e\n");
 }
 
 // index

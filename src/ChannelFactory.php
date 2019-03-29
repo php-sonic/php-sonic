@@ -2,8 +2,8 @@
 
 namespace SonicSearch;
 
-class ChannelFactory {
-
+class ChannelFactory
+{
     /**
      * @var string
      */
@@ -19,17 +19,17 @@ class ChannelFactory {
     /**
      * @var string
      */
-	private $mode;
+    private $mode;
     /**
      * @var int
      */
-	private $receiveTimeout;
-	/**
+    private $receiveTimeout;
+    /**
 	 * @var int
 	 */
-	private $connectionTimeout;
+    private $connectionTimeout;
 
-	
+
     /**
      * ChannelFactory constructor.
      * @param $host
@@ -38,7 +38,8 @@ class ChannelFactory {
      * @param $connectionTimeout
      * @param $readTimeout
      */
-    public function __construct(string $host, int $port, string $password, int $connectionTimeout = 10, int $readTimeout = 0) {
+    public function __construct(string $host, int $port, string $password, int $connectionTimeout = 10, int $readTimeout = 0)
+    {
         $this->host = $host;
         $this->port = $port;
         $this->password = $password;
