@@ -25,8 +25,8 @@ class ChannelFactory
      */
     private $receiveTimeout;
     /**
-	 * @var int
-	 */
+     * @var int
+     */
     private $connectionTimeout;
 
 
@@ -47,7 +47,8 @@ class ChannelFactory
         $this->readTimeout = $readTimeout;
     }
 
-    public function newIngestChannel() : IngestChannel {
+    public function newIngestChannel(): IngestChannel
+    {
         return new IngestChannel(
             $this->host,
             $this->port,
@@ -57,7 +58,8 @@ class ChannelFactory
         );
     }
 
-    public function newSearchChannel() : SearchChannel {
+    public function newSearchChannel(): SearchChannel
+    {
         return new SearchChannel(
             $this->host,
             $this->port,
@@ -67,7 +69,8 @@ class ChannelFactory
         );
     }
 
-    public function newControlChannel() : ControlChannel {
+    public function newControlChannel(): ControlChannel
+    {
         return new ControlChannel(
             $this->host,
             $this->port,

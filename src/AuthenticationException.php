@@ -4,4 +4,6 @@ namespace SonicSearch;
 
 use RuntimeException;
 
-class AuthenticationException extends RuntimeException {}
+class AuthenticationException extends RuntimeException
+{
+}

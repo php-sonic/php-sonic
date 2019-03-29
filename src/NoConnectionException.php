@@ -4,4 +4,6 @@ namespace SonicSearch;
 
 use RuntimeException;
 
-class NoConnectionException extends RuntimeException {}
+class NoConnectionException extends RuntimeException
+{
+}

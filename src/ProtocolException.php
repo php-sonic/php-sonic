@@ -4,4 +4,6 @@ namespace SonicSearch;
 
 use RuntimeException;
 
-class ProtocolException extends RuntimeException {}
+class ProtocolException extends RuntimeException
+{
+}
