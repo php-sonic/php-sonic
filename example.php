@@ -1,12 +1,13 @@
 <?php
 
 require __DIR__ . '/vendor/autoload.php';
+define('__SONIC_CLIENT_DEBUG__', true);
 
-$address = '127.0.0.1';
+$address = 'localhost';
 $port = 1491;
 $password = 'passwd';
-$connectionTimeout = 1;
-$readTimeout = 1;
+$connectionTimeout = 10;
+$readTimeout = 5;
 $collection = 'messages';
 $bucket = 'default';
 
@@ -15,6 +16,14 @@ $factory = new \SonicSearch\ChannelFactory($address, $port, $password, $connecti
 $ingest = $factory->newIngestChannel();
 $search = $factory->newSearchChannel();
 $control = $factory->newControlChannel();
+
+try {
+	$ingest->connect();
+	$search->connect();
+	$control->connect();
+} catch (\SonicSearch\NoConnectionException $e) {
+	echo("Failed to connect to Sonic: $e\n");
+}
 
 // index
 $ingest->ping();
@@ -45,9 +54,9 @@ $responses = $search->suggest($collection, $bucket, "Hong");
 assert($responses[0] === 'hongwei');
 
 // cleanup
-$ingest->flushc($collection);
-$ingest->flushb($collection, $bucket);
-$ingest->flusho($collection, $bucket, '1');
+$ingest->flush($collection);
+$ingest->flush($collection, $bucket);
+$ingest->flush($collection, $bucket, '1');
 
 $resp = $ingest->count($collection);
 assert($resp === '0');
