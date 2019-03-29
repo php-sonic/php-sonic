@@ -59,12 +59,17 @@ $ingest->flush($collection, $bucket);
 $ingest->flush($collection, $bucket, '1');
 
 $resp = $ingest->count($collection);
-assert($resp === '0');
+assert($resp === 0);
 $resp = $ingest->count($collection, $bucket);
-assert($resp === '0');
+assert($resp === 0);
 $resp = $ingest->count($collection, $bucket, '1');
-assert($resp === '0');
+assert($resp === 0);
 
 $ingest->quit();
 $search->quit();
 $control->quit();
+
+// exit with error if there was one
+if ($err = error_get_last()) {
+    exit($err['type']);
+}
