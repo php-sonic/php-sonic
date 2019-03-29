@@ -2,12 +2,11 @@
     "name": "php-sonic/php-sonic",
     "type": "library",
     "description": "PHP client of Sonic search",
-    "version": "2.0.0",
+    "version": "2.0.1",
     "license": "MIT",
     "keywords": ["sonic", "search"],
     "require": {
         "php": "^7.0",
-        "ext-sockets": "^7.0"
     },
     "autoload": {
         "psr-4": {
