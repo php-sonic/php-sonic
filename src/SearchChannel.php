@@ -35,11 +35,11 @@ class SearchChannel extends Channel
             $queryMessage->setArgumentKeyVal($queryMessage->argumentCnt(), 'OFFSET', $offset);
         }
         $response = $this->sendAndAwaitResponse($queryMessage);
-        if ($response->getVerb() != 'PENDING') {
+        if ($response->getVerb() !== 'PENDING') {
             throw new CommandFailedException($queryMessage, $response);
         }
         $searchResult = $this->readResponse();
-        if ($searchResult->getVerb() != 'EVENT' && $searchResult->getArgument(0) != 'QUERY') {
+        if ($searchResult->getVerb() !== 'EVENT' && $searchResult->getArgument(0) !== 'QUERY') {
             throw new CommandFailedException($queryMessage, $searchResult);
         }
         return $searchResult->asArray(2);
@@ -64,11 +64,11 @@ class SearchChannel extends Channel
             $suggestMessage->setArgumentKeyVal(3, 'LIMIT', $limit);
         }
         $response = $this->sendAndAwaitResponse($suggestMessage);
-        if ($response->getVerb() != 'PENDING') {
+        if ($response->getVerb() !== 'PENDING') {
             throw new CommandFailedException($suggestMessage, $response);
         }
         $suggestResult = $this->readResponse();
-        if ($suggestResult->getVerb() != 'EVENT' && $suggestResult->getArgument(0) != 'SUGGEST') {
+        if ($suggestResult->getVerb() !== 'EVENT' && $suggestResult->getArgument(0) !== 'SUGGEST') {
             throw new CommandFailedException($suggestMessage, $suggestResult);
         }
         return $suggestResult->asArray(2);

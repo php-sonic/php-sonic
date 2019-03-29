@@ -8,27 +8,26 @@ class ChannelFactory
      * @var string
      */
     private $host;
+
     /**
      * @var int
      */
     private $port;
+
     /**
      * @var string
      */
     private $password;
-    /**
-     * @var string
-     */
-    private $mode;
-    /**
-     * @var int
-     */
-    private $receiveTimeout;
+
     /**
      * @var int
      */
     private $connectionTimeout;
 
+    /**
+     * @var string
+     */
+    private $receiveTimeout;
 
     /**
      * ChannelFactory constructor.
@@ -36,15 +35,15 @@ class ChannelFactory
      * @param $port
      * @param $password
      * @param $connectionTimeout
-     * @param $readTimeout
+     * @param $receiveTimeout
      */
-    public function __construct(string $host, int $port, string $password, int $connectionTimeout = 10, int $readTimeout = 0)
+    public function __construct(string $host, int $port, string $password, int $connectionTimeout = 10, int $receiveTimeout = 0)
     {
         $this->host = $host;
         $this->port = $port;
         $this->password = $password;
         $this->connectionTimeout = $connectionTimeout;
-        $this->readTimeout = $readTimeout;
+        $this->receiveTimeout = $receiveTimeout;
     }
 
     public function newIngestChannel(): IngestChannel
@@ -54,7 +53,7 @@ class ChannelFactory
             $this->port,
             $this->password,
             $this->connectionTimeout,
-            $this->readTimeout
+            $this->receiveTimeout
         );
     }
 
@@ -65,7 +64,7 @@ class ChannelFactory
             $this->port,
             $this->password,
             $this->connectionTimeout,
-            $this->readTimeout
+            $this->receiveTimeout
         );
     }
 
@@ -76,7 +75,7 @@ class ChannelFactory
             $this->port,
             $this->password,
             $this->connectionTimeout,
-            $this->readTimeout
+            $this->receiveTimeout
         );
     }
 }

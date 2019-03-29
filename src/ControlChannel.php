@@ -22,7 +22,7 @@ class ControlChannel extends Channel
     {
         $triggerMessage = new SonicMessage(['TRIGGER', $action]);
         $response = $this->sendAndAwaitResponse($triggerMessage);
-        if ($response->getVerb() != 'OK') {
+        if ($response->getVerb() !== 'OK') {
             throw new CommandFailedException($suggestMessage, $suggestResult);
         }
     }

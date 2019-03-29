@@ -29,7 +29,7 @@ class IngestChannel extends Channel
             $pushChunkMessage = $pushMessageTemplate;
             $pushChunkMessage->setArgument(3, SonicMessage::quoted($valueChunk));
             $response = $this->sendAndAwaitResponse($pushChunkMessage);
-            if ($response->getVerb() != 'OK') {
+            if ($response->getVerb() !== 'OK') {
                 throw new CommandFailedException($pushChunkMessage, $response);
             }
         }
@@ -79,7 +79,7 @@ class IngestChannel extends Channel
             }
         }
         $response = $this->sendAndAwaitResponse($countMessage);
-        if ($response->getVerb() != 'RESULT') {
+        if ($response->getVerb() !== 'RESULT') {
             throw new CommandFailedException($countMessage, $response);
         }
         return $response->getArgumentInt(0);
@@ -108,7 +108,7 @@ class IngestChannel extends Channel
         }
         $flushMessage->setVerb($flushOp);
         $response = $this->sendAndAwaitResponse($flushMessage);
-        if ($response->getVerb() != 'RESULT') {
+        if ($response->getVerb() !== 'RESULT') {
             throw new CommandFailedException($flushMessage, $response);
         }
         return $response->getArgumentInt(0);

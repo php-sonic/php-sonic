@@ -14,32 +14,37 @@ abstract class Channel
      * @var string
      */
     private $mode;
+
     /**
      * @var string
      */
     private $host;
+
     /**
      * @var int
      */
     private $port;
+
     /**
      * @var string
      */
     private $password;
+
     /**
      * @var int
      */
     private $receiveTimeout;
+
     /**
      * @var int
      */
     private $connectionTimeout;
 
-
     /**
      * @var resource
      */
     private $socket = null;
+
     /**
      * @var int
      */
@@ -99,17 +104,17 @@ abstract class Channel
         }
 
         $helloMessage = $this->readResponse();
-        if ($helloMessage->getVerb() != 'CONNECTED') {
+        if ($helloMessage->getVerb() !== 'CONNECTED') {
             throw new ProtocolException("Sonic did not greet us.");
         }
 
         // Start session
         $response = $this->sendAndAwaitResponse(new SonicMessage(['START', $this->mode, $this->password]));
-        if ($response->getVerb() != 'STARTED') {
+        if ($response->getVerb() !== 'STARTED') {
             $reason = $response->getArgument(0);
-            if ($reason == 'authentication_required') {
+            if ($reason === 'authentication_required') {
                 throw new AuthenticationException("A password is required to access this Sonic server");
-            } elseif ($reason == 'authentication_failed') {
+            } elseif ($reason === 'authentication_failed') {
                 throw new AuthenticationException("Wrong password given");
             }
             throw new ProtocolException("Sonic Mode-Change failed: " . $response->serialize());
@@ -217,7 +222,7 @@ abstract class Channel
     {
         $pingMessage = new SonicMessage(['PING']);
         $response = $this->sendAndAwaitResponse($pingMessage);
-        if ($response->getVerb() != 'PONG') {
+        if ($response->getVerb() !== 'PONG') {
             throw new CommandFailedException($pingMessage, $response);
         }
     }
