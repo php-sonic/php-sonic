@@ -2,7 +2,7 @@
     "name": "php-sonic/php-sonic",
     "type": "library",
     "description": "PHP client of Sonic search",
-    "version": "1.0.3",
+    "version": "2.0.0",
     "license": "MIT",
     "keywords": ["sonic", "search"],
     "require": {
