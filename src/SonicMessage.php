@@ -21,7 +21,7 @@ class SonicMessage
 
     public function serialize(): string
     {
-        return join($this->segments, ' ');
+        return implode(' ', $this->segments);
     }
 
     public function getVerb(): string
