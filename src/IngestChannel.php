@@ -57,7 +57,7 @@ class IngestChannel extends Channel
         foreach ($valueSplits as $valueChunk) {
             $popChunkMessage = $popMessageTemplate;
             $popChunkMessage->setArgument(3, SonicMessage::quoted($valueChunk));
-            $response = $this->sendMessage($popChunkMessage);
+            $response = $this->sendAndAwaitResponse($popChunkMessage);
             if ($response->getVerb() != 'RESULT') {
                 throw new CommandFailedException($popChunkMessage, $response);
             }
