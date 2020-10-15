@@ -14,7 +14,7 @@ class ControlChannel extends Channel
 
     /**
      * Trigger the given action.
-     * @param action string The action to triger.
+     * @param $action string The action to trigger.
      * @throws NoConnectionException If the connection to Sonic has been lost in the meantime.
      * @throws CommandFailedException If execution of the command failed for which-ever reason.
      */
