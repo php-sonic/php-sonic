@@ -14,11 +14,12 @@ class SearchChannel extends Channel
 
     /**
      * Query Sonic for the given search terms.
-     * @param collection string Collection within Sonic to query for the given search-term.
-     * @param bucket string Bucket within the collection to query for the given search-term.
-     * @param terms string A search string containing multiple words to query the given bucket for.
-     * @param limit int Optional limit to the amount of returned search results.
-     * @param offset int Optional offset in the pagination of search-results introduced by the limit.
+     * @param $collection string Collection within Sonic to query for the given search-term.
+     * @param $bucket string Bucket within the collection to query for the given search-term.
+     * @param $terms string A search string containing multiple words to query the given bucket for.
+     * @param $limit int Optional limit to the amount of returned search results.
+     * @param $offset int Optional offset in the pagination of search-results introduced by the limit.
+     * @return array
      * @throws NoConnectionException If the connection to Sonic has been lost in the meantime.
      * @throws CommandFailedException If execution of the command failed for which-ever reason.
      */
@@ -47,10 +48,10 @@ class SearchChannel extends Channel
 
     /**
      * Request word suggestion from sonic, for the given string.
-     * @param collection string Collection within Sonic to search for suggestions in.
-     * @param bucket string Bucket within the collection to search for suggestions in.
-     * @param word Beginning of the word to request completions for.
-     * @param limit int Optional limit to the amount of returned suggestions.
+     * @param $collection string Collection within Sonic to search for suggestions in.
+     * @param $bucket string Bucket within the collection to search for suggestions in.
+     * @param $word string Beginning of the word to request completions for.
+     * @param $limit int Optional limit to the amount of returned suggestions.
      * @throws NoConnectionException If the connection to Sonic has been lost in the meantime.
      * @throws CommandFailedException If execution of the command failed for which-ever reason.
      */

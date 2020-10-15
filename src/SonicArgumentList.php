@@ -16,8 +16,8 @@ class SonicArgumentList
 
     /**
      * Parse the given message segment array, starting at a given index as argument list.
-     * @param message string[] Array of message segments to parse as argument list.
-     * @param startIdx int Index at which to start parsing within the given message segment list.
+     * @param $message string[] Array of message segments to parse as argument list.
+     * @param $startIdx int Index at which to start parsing within the given message segment list.
      * @return SonicArgumentList Parsed argument list.
      */
     public static function fromMessage(array &$message, int $startIdx): SonicArgumentList
